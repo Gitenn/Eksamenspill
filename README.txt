@@ -1,7 +1,7 @@
 
-#This is an exam study game specifically for Introduction to AI course
+This is an exam study game specifically for Introduction to AI course
 
-##A vibecoding project to make studying engaging and fun
+A vibecoding project to make studying engaging and fun
 
 1. Keep quiz.html and all questions_*.js files in ONE folder, then double-click quiz.html (works offline).
 2. Expected file names: questions_00_sample, 01_evaluation, 02_mlbasics, 03_data, 04_regclust, 05_mlyearning, 06_genai, 07_buildmodel, 08_aiindex, 09_labs, 10_prompting, 11_history (.js).
