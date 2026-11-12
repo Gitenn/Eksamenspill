@@ -4,7 +4,10 @@ An exam study game for the Introduction to AI course.
 A vibecoding project to make studying engaging and fun.
 
 HOW TO RUN
-  Keep the whole folder together and double-click quiz.html (works offline).
+Keep the whole folder together and double-click quiz.html (works offline).
+
+Run on Android phones with Acode. 
+
 
 FOLDER LAYOUT
   quiz.html            page shell: markup and script tags only
