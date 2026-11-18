@@ -14,8 +14,8 @@
   function buildSummaryCard(session) {
     const results = session.results;
     const right = results.filter((r) => r.ok).length;
-    const percent = (100 * right) / results.length;
-    const points = scoring.estimatedPoints(percent).toFixed(1);
+    const { earned, possible, percent } = scoring.pointTotals(results);
+    const points = scoring.estimatedPoints(percent).toFixed(0);
 
     const card = el("div", "card");
     card.appendChild(
@@ -25,11 +25,12 @@
       card.appendChild(el("p", "warn", "Time is up. Unanswered questions count as wrong."));
     }
     card.append(
-      el("p", "big", `${right} / ${results.length}  (${percent.toFixed(1)}%)`),
+      el("p", "big", `${earned} / ${possible} points  (${percent.toFixed(1)}%)`),
+      el("p", null, `${right} of ${results.length} questions right. Single = 1 point, multi = 2 points, all-or-nothing.`),
       el(
         "p",
         null,
-        `Estimated grade: ${scoring.gradeOf(percent)}  (equivalent to about ${points} of ${Exam.config.grading.pointsTotal} points)`
+        `Estimated grade: ${scoring.gradeOf(percent)}  (about ${points} of ${Exam.config.grading.pointsTotal} points if Part C goes as well)`
       ),
       el("p", "muted", scoring.bandsLegend())
     );

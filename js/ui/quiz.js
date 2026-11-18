@@ -140,8 +140,8 @@
         "p",
         "hint",
         q.type === "multi"
-          ? "Select ALL correct answers. All-or-nothing scoring."
-          : "Select ONE answer."
+          ? "2 points. One or more can be correct: select ALL correct answers. All-or-nothing."
+          : "1 point. Select ONE answer."
       ),
       buildOptions(q)
     );

@@ -39,8 +39,9 @@
     if (q.type === "single" && q.answer.length !== 1) {
       problems.push("single needs exactly 1 answer");
     }
-    if (q.type === "multi" && q.answer.length < 2) {
-      problems.push("multi needs 2 or more answers");
+    // As on the real exam, a multi question can have one or more correct options.
+    if (q.type === "multi" && q.answer.length < 1) {
+      problems.push("multi needs 1 or more answers");
     }
     return problems;
   }

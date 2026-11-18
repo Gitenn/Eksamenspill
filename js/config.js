@@ -20,7 +20,10 @@
     ],
     defaultSessionLength: "20",
 
-    mock: { questions: 40, minutes: 120 },
+
+    mock: { questions: 40, multiShare: 20 / 75, minutes: 90 },
+
+    points: { single: 1, multi: 2 },
 
     /**
      * Leitner-style boxes: a question starts in box 1 and moves up when
@@ -37,7 +40,8 @@
     },
 
     grading: {
-      pointsTotal: 80,
+      /** Real exam total: 55 x 1 + 20 x 2 + 5 x 5 (Part C short answers). */
+      pointsTotal: 120,
       /** Highest band first. The last band is the catch-all. */
       bands: [
         { min: 90, grade: "A" },

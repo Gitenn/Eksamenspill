@@ -30,11 +30,35 @@
     return picked;
   }
 
+  /**
+   * Returns a copy of q with the options in random order and the answer
+   * indexes remapped, so the correct option is never in a fixed position.
+   * The id is unchanged, so progress and flags still match.
+   */
+  function withShuffledOptions(q) {
+    const order = shuffle(q.options.map((_, i) => i));
+    const answer = order
+      .map((oldIndex, newIndex) => (q.answer.includes(oldIndex) ? newIndex : -1))
+      .filter((i) => i >= 0);
+    return Object.assign({}, q, { options: order.map((i) => q.options[i]), answer });
+  }
+
+  /** Mock exam list with the real exam's single/multi mix. */
+  function mockList() {
+    const count = Math.min(config.mock.questions, data.questions.length);
+    const multis = shuffle(data.questions.filter((q) => q.type === "multi"));
+    const singles = shuffle(data.questions.filter((q) => q.type !== "multi"));
+    const multiCount = Math.min(multis.length, Math.round(count * config.mock.multiShare));
+    const picked = multis
+      .slice(0, multiCount)
+      .concat(singles.slice(0, count - multiCount));
+    return shuffle(picked);
+  }
+
   /** Returns { list } or { error } for the requested mode and menu options. */
   function buildList(mode, options) {
     if (mode === "mock") {
-      const count = Math.min(config.mock.questions, data.questions.length);
-      return { list: shuffle(data.questions).slice(0, count) };
+      return { list: mockList() };
     }
 
     let pool = data.poolFor(options.topic);
@@ -66,6 +90,7 @@
   function create(mode, options) {
     const built = buildList(mode, options);
     if (built.error) return { error: built.error };
+    built.list = built.list.map(withShuffledOptions);
 
     const isMock = mode === "mock";
     return {

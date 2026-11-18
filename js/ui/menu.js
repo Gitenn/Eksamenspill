@@ -60,7 +60,8 @@
     bar.append(
       button("Practice", "btn primary", () => start("practice")),
       button("Weak spots only", "btn", () => start("weak")),
-      button(`Mock exam (${mock.questions} q, ${mock.minutes / 60} h)`, "btn", () => start("mock"))
+      button(`Mock exam (${mock.questions} q, ${mock.minutes} min, 1/2-point scoring)`, "btn", () => start("mock")),
+      button(`Part C short answers (${ui.essay ? ui.essay.count() : 0})`, "btn", () => ui.essay.start())
     );
     return bar;
   }

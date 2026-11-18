@@ -26,6 +26,23 @@
     return `Grade bands by percent: ${parts}, ${last.grade} below ${named[named.length - 1].min}.`;
   }
 
+  /** Points a question is worth (single 1, multi 2). */
+  function pointsOf(q) {
+    return Exam.config.points[q.type] || 1;
+  }
+
+  /** Earned and possible points for a list of results. */
+  function pointTotals(results) {
+    let earned = 0;
+    let possible = 0;
+    results.forEach((r) => {
+      const worth = pointsOf(r.q);
+      possible += worth;
+      if (r.ok) earned += worth;
+    });
+    return { earned, possible, percent: possible ? (100 * earned) / possible : 0 };
+  }
+
   /** True when two lists of option indexes contain the same values (any order). */
   function sameSelection(a, b) {
     const x = [...a].sort((m, n) => m - n);
@@ -55,6 +72,8 @@
   Exam.scoring = {
     gradeOf,
     estimatedPoints,
+    pointsOf,
+    pointTotals,
     bandsLegend,
     sameSelection,
     formatOptions,

@@ -11,6 +11,7 @@
     menu: $("menu"),
     quiz: $("quiz"),
     results: $("results"),
+    essay: $("essay"),
   };
 
   /** Shows one screen, hides the others, and scrolls to the top. */

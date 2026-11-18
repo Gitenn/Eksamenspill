@@ -39,12 +39,19 @@ ADDING QUESTIONS
   1. Edit or create a file in questions/. Expected names:
      questions_00_sample, 01_evaluation, 02_mlbasics, 03_data, 04_regclust,
      05_mlyearning, 06_genai, 07_buildmodel, 08_aiindex, 09_labs,
-     10_prompting, 11_history (.js)
+     10_prompting, 11_history, 12_examgaps (.js), plus essays.js (Part C)
   2. Use double-quoted strings only, no line breaks inside strings, no trailing
      commas. "answer" is an array of option indexes starting at 0.
   3. A new file name needs one matching <script> line in quiz.html.
   4. A red banner at the top of quiz.html lists any malformed question or a
      file with a syntax error.
+
+EXAM FORMAT 
+  80 questions, 120 points: Part A 55 single x 1 point, Part B 20 multi x 2 points
+  (one or more correct, all-or-nothing), Part C 5 short answers x 5 points.
+  The options are shuffled every time a question is shown, as in WISEflow.
+  The mock exam uses the same single/multi mix and scores 1 / 2 points.
+  "Part C short answers": write 80-150 words, reveal the model answer, score 0-5.
 
 USING THE QUIZ
   Keys: 1-9 pick an option, U toggles "I'm not sure", Enter submits / continues.
